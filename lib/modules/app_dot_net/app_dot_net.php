@@ -300,6 +300,7 @@ class App_Dot_Net extends \Podlove\Modules\Base {
     }
 
     private function is_already_published($post_id) {
+
     	return get_post_meta($post_id, '_podlove_episode_was_published', true);
     }
     
@@ -554,7 +555,7 @@ class App_Dot_Net extends \Podlove\Modules\Base {
     }
     
 	public function post_to_adn_handler( $postid ) {
-		if ( $this->is_already_published( $post_id ) || $this->get_module_option('adn_automatic_announcement') !== 'on' )
+		if ( $this->is_already_published( $postid ) === '1' || $this->get_module_option('adn_automatic_announcement') !== 'on' )
 			return;
 
 	    $post_id = $_POST['post_ID'];
